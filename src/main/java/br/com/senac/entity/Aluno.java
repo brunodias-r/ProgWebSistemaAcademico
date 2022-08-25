@@ -14,7 +14,7 @@ public class Aluno implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
-	/*Seuquence: O usuário vai no banco e diz onde vai iniciar o preenchimento.*/
+	/*Sequence: O usuário vai no banco e diz onde vai iniciar o preenchimento.*/
 	private Integer id;
 	private String nome;
 	
