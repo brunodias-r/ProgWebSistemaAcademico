@@ -2,7 +2,6 @@ package br.com.senac.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +29,12 @@ public class AlunoService {
 	
 	public void removerPorId(Integer id) {
 		repo.deleteById(id);
+	}
+	
+	public Aluno salvarAlteracao(Aluno alunoAlterado) {
+		Aluno aluno = buscarPorId(alunoAlterado.getId());
+		aluno.setNome(alunoAlterado.getNome());
+		return salvar(aluno);
 	}
 
 }

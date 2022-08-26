@@ -36,14 +36,20 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		
 		System.out.println("Aluno encontardo: "+aluno4.getNome());
 		
-		alunoService.removerPorId(2);
-		
-		System.out.println("\nLista de todos os alunos: ");
-		List<Aluno> listarAlunos = alunoService.buscarTodosAlunos();
-		for (Aluno aluno : listarAlunos) {
-			System.out.println(aluno.getNome());
-		}
+		//alunoService.removerPorId(2);
+//		
+//		System.out.println("\nLista de todos os alunos: ");
+//		List<Aluno> listarAlunos = alunoService.buscarTodosAlunos();
+//		for (Aluno aluno : listarAlunos) {
+//			System.out.println(aluno.getNome());
+//		}
 		//repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
+		
+		Aluno alunoAlterado = new Aluno();
+		alunoAlterado.setId(1);
+		alunoAlterado.setNome("Lucas Silva");
+		
+		alunoService.salvarAlteracao(alunoAlterado);
 	}
 
 }
