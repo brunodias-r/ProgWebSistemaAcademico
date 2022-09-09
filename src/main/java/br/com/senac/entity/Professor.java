@@ -1,17 +1,20 @@
 package br.com.senac.entity;
+
 import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Aluno implements Serializable{
+public class Professor implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	/*Sequence: O usuário vai no banco e diz onde vai iniciar o preenchimento.*/
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idProfessor")
 	private Integer id;
 	private String nome;
 	private Integer idade;
@@ -21,7 +24,7 @@ public class Aluno implements Serializable{
 	}
 	public void setId(Integer id) {
 		this.id = id;
-	}	
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -34,4 +37,5 @@ public class Aluno implements Serializable{
 	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
+	
 }
