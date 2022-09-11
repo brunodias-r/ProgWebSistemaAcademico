@@ -15,15 +15,15 @@
 </head>
 
 <body>
-	<div class="container">
+	<div class="container-fluid" style="margin:0 auto;">
 		<div class="row" style="display: flex; justify-content: center;">
 
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item active" aria-current="/alunos">Alunos</li>
-					<li class="breadcrumb-item active" aria-current="/professores">Professores</li>
-					<li class="breadcrumb-item active" aria-current="/cursos">Cursos</li>
-					<li class="breadcrumb-item active" aria-current="/turmas">Turmas</li>
+					<li class="breadcrumb-item active" href="/aluno/paginaAlunos">Alunos</li>
+					<li class="breadcrumb-item active" href="/professor/paginaProfessores">Professores</li>
+					<li class="breadcrumb-item active" href="/curso/paginaCursos">Cursos</li>
+					<li class="breadcrumb-item active" href="/turma/paginaTurmas">Turmas</li>
 				</ol>
 			</nav>
 
@@ -32,12 +32,8 @@
 				<form method="post">
 					<p style="font-weight: bolder;">Id gerado automaticamente</p>
 					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Professor</label>
+						<label for="exampleFormControlInput1" class="form-label">Curso</label>
 						<input type="nome" class="form-control" id="exampleFormControlInput1" placeholder="nome" />
-					</div>
-					<div class="mb-3">
-						<label for="exampleFormControlInput1" class="form-label">Idade</label>
-						<input type="idade" class="form-control" id="exampleFormControlInput1" placeholder="idade" />
 					</div>
 
 					<button type="submit" class="btn btn-primary">Salvar</button>
@@ -48,13 +44,13 @@
 				<div class="row" style="display: flex; justify-content: spcace-between">
 
 					<div class="col-4">
-						<button type="button" action="/professores" method="get" class="btn btn-dark">Listar Todos</button>
+						<button type="button" action="/cursos" method="get" class="btn btn-dark">Listar Todos</button>
 					</div>
 
 					<div class="col-8">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="Insira o Id aqui.."
-								aria-label="Insira o Id do professor..." aria-describedby="button-addon2">
+								aria-label="Insira o Id do curso" aria-describedby="button-addon2">
 							<div class="input-group-append">
 								<button class="btn btn-warning" type="button" id="button-addon2" data-toggle="modal"
 									data-target="#modalExemplo">Buscar por Id</button>
@@ -67,16 +63,15 @@
 					<thead>
 						<tr>
 							<th class="mr-auto" scope="col">Id</th>
-							<th class="mr-auto" scope="col">Professor</th>
+							<th class="mr-auto" scope="col">Curso</th>
 							<th scope="col">Opções</th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr th:each="professor: ${professores}">
-							<td scope="row" th:text="${professor.id}"></td>
-							<td scope="row" th:text="${professor.nome}"></td>
-							<td scope="row" th:text="${professor.idade}"></td>
+						<tr th:each="curso: ${cursos}">
+							<td scope="row" th:text="${curso.id}"></td>
+							<td scope="row" th:text="${curso.nome}"></td>
 							<td scope="row">
 								<button type="button" class="btn btn-success">Atualizar</button>
 								<button type="button" class="btn btn-danger">Deletar</button>
@@ -103,16 +98,14 @@
 									<thead>
 										<tr>
 											<th class="mr-auto" scope="col">Id</th>
-											<th class="mr-auto" scope="col">Curso</th>
-											<th class="mr-auto" scope="col">Idade</th>
+											<th class="mr-auto" scope="col">Nome</th>
 											<th scope="col">Opções</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="professor: ${professores}">
-											<td scope="row" th:text="${professor.id}"></td>
-											<td scope="row" th:text="${professor.nome}"></td>
-											<td scope="row" th:text="${professor.idade}"></td>
+										<tr th:each="curso: ${cursos}">
+											<td scope="row" th:text="${curso.id}"></td>
+											<td scope="row" th:text="${curso.nome}"></td>
 											<td scope="row">
 												<button type="button" class="btn btn-success">
 													Atualizar

@@ -10,18 +10,17 @@ import br.com.senac.entity.Curso;
 import br.com.senac.service.CursoService;
 
 @Controller
-@RequestMapping(value= "cursos")
+@RequestMapping(value="curso")
 public class CursoController {
 	
 	@Autowired
 	private CursoService cursoService;
 	
-	@GetMapping(value= "/cursos")
-	public ModelAndView listarTodosAlunos() {
-		ModelAndView mv = new ModelAndView("cursos");
-		List<Curso> cursos = cursoService.buscarTodosCursos();
-		mv.addObject("cursos",cursos);
+	@GetMapping(value="/listarCursos")
+	public ModelAndView listarTodosCursos() {
+		ModelAndView mv = new ModelAndView("curso/paginaCursos");
+		//List<Curso> cursos = cursoService.buscarTodosCursos();
+		mv.addObject("cursos",cursoService.buscarTodosCursos());
 		return mv;
-	}
-	
+	}	
 }
