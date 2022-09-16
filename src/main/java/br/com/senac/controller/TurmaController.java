@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.senac.entity.Aluno;
-import br.com.senac.entity.Curso;
 import br.com.senac.entity.Turma;
 import br.com.senac.service.TurmaService;
 
@@ -28,7 +26,7 @@ public class TurmaController {
 	
 	@GetMapping("/cadastrarTurma")
 	public ModelAndView cadastrarTurma(Turma turma) {
-		ModelAndView mv = new ModelAndView("curso/cadastrarTurma");
+		ModelAndView mv = new ModelAndView("turma/cadastrarTurma");
 		mv.addObject("turma",new Turma());
 		return mv;
 	}

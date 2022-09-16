@@ -7,25 +7,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Turma implements Serializable{
+public class Turma implements Serializable {
 	
-	private static final long SerialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String turno;
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTurno() {
 		return turno;
 	}
+
 	public void setTurno(String turno) {
 		this.turno = turno;
 	}
-	
+
 }

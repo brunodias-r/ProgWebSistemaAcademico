@@ -1,6 +1,5 @@
 package br.com.senac.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.senac.entity.Aluno;
 import br.com.senac.entity.Curso;
 import br.com.senac.service.CursoService;
 
@@ -29,12 +27,12 @@ public class CursoController {
 	@GetMapping("/cadastrarCurso")
 	public ModelAndView cadastrarCurso(Curso curso) {
 		ModelAndView mv = new ModelAndView("curso/cadastrarCurso");
-		mv.addObject("curso",new Aluno());
+		mv.addObject("curso",new Curso());
 		return mv;
 	}
 	
 	@PostMapping("/salvar")
-	public ModelAndView salvarAluno(Curso curso) {
+	public ModelAndView salvar(Curso curso) {
 		cursoService.salvar(curso);
 		return listarTodosCursos();
 	}

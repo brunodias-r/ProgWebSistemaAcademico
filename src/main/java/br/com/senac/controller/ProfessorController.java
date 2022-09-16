@@ -26,7 +26,7 @@ public class ProfessorController {
 	
 	@GetMapping("/cadastrarProfessor")
 	public ModelAndView cadastrarProfessor(Professor professor) {
-		ModelAndView mv = new ModelAndView("aluno/cadastrarProfessor");
+		ModelAndView mv = new ModelAndView("professor/cadastrarProfessor");
 		mv.addObject("professor",new Professor());
 		return mv;
 	}
