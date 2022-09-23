@@ -42,10 +42,8 @@
                 <td scope="row" th:text="${professor.nome}"></td>
                 <td scope="row" th:text="${professor.idade}"></td>
                 <td scope="row">
-                  <button type="button" class="btn btn-success">
-                    Atualizar
-                  </button>
-                  <button type="button" class="btn btn-danger">Deletar</button>
+                  <a class="btn btn-success" th:href="@{/professsor/paginaAlterar/{idProfessor}(idProfessor=${professor.id})}">Atualizar</a>
+                  <a class="btn btn-danger" th:href="@{/professor/excluir/{idProfessor}(idProfessor=${professor.id})}">Deletar</a>
                 </td>
               </tr>
             </tbody>

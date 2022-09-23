@@ -24,28 +24,48 @@
   <body>
     <div class="container-fluid" style="margin: 0 auto">
       <div class="row" style="display: flex; justify-content: center">
-        <div class="col-7">
-          <h3 style="display: flex; justify-content: center">Turmas</h3>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th class="mr-auto" scope="col">Id</th>
-                <th class="mr-auto" scope="col">Turno</th>
-                <th scope="col">Opções</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr th:each="turma: ${turmas}">
-                <td scope="row" th:text="${turma.id}"></td>
-                <td scope="row" th:text="${turma.turno}"></td>
-                <td scope="row">
-                  <a class="btn btn-success" th:href="@{/turma/paginaAlterar/{idTurma}(idTurma=${turma.id})}">Atualizar</a>
-                  <a class="btn btn-danger" th:href="@{/turma/excluir/{idTurma}(idTurma=${turma.id})}">Deletar</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+      	<h3 style="display: flex; justify-content: center">Alterar aluno</h3>
+        <div class="col-5">
+          <form
+            method="post"
+            class="form-horizontal"
+            th:action="@{/aluno/salvarAlteracao}"
+            th:object="${aluno}"
+          >
+            <div class="form-group">
+              <fieldset>
+                           
+                <div class="form-group row">
+                  <label>Id</label>
+                  <input
+                    type="text"
+                    class="form-control input-sm"
+                    th:field="*{id}" readonly="readonly"
+                  />
+                
+                
+                  <label>Nome</label>
+                  <input
+                    type="text"
+                    class="form-control input-sm"
+                    th:field="*{nome}"
+                    id="exampleFormControlInput1"
+                    placeholder="nome"
+                  />
+                  
+                  <label>Idade</label>
+                  <input
+                    type="text"
+                    class="form-control input-sm"
+                    th:field="*{idade}"
+                    id="exampleFormControlInput1"
+                    placeholder="idade"
+                  />
+                </div>
+                
+              </fieldset>                
+            <button type="submit" class="btn btn-primary">Salvar alteração</button>
+          </form>
         </div>
       </div>
     </div>
