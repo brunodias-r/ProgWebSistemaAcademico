@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import br.com.senac.entity.Professor;
 import br.com.senac.repository.ProfessorRepository;
 
@@ -28,8 +29,14 @@ public class ProfessorService {
 		return professor.orElseThrow(() -> new ObjectNotFoundException(1L,resposta));
 	}
 	
-	public void removerPorId(Integer id) {
+	public void deletarPorId(Integer id) {
 		repo.deleteById(id);
 	}
-
+	
+	public Professor salvarAlteracao(Professor  professorAlterado) {
+		Professor professor = buscarPorId(professorAlterado.getId());
+		professor.setNome(professorAlterado.getNome());
+		professor.setIdade(professorAlterado.getIdade());
+		return salvar(professor);
+	}
 }

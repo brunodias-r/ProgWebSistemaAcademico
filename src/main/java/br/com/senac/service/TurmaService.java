@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import br.com.senac.entity.Turma;
 import br.com.senac.repository.TurmaRepository;
 
@@ -29,7 +30,13 @@ public class TurmaService {
 		return turma.orElseThrow(() -> new ObjectNotFoundException(1L,resposta));
 	}
 	
-	public void removerPorId(Integer id) {
+	public void deletarPorId(Integer id) {
 		repo.deleteById(id);
+	}
+	
+	public Turma salvarAlteracao(Turma turmaAlterada) {
+		Turma turma = buscarPorId(turmaAlterada.getId());
+		turma.setTurno(turmaAlterada.getTurno());
+		return salvar(turma);
 	}
 }
