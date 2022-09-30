@@ -31,6 +31,7 @@
               <tr>
                 <th class="mr-auto" scope="col">Id</th>
                 <th class="mr-auto" scope="col">Curso</th>
+                <th >Professores</th>
                 <th scope="col">Opções</th>
               </tr>
             </thead>
@@ -38,6 +39,7 @@
               <tr th:each="curso: ${cursos}">
                 <td scope="row" th:text="${curso.id}"></td>
                 <td scope="row" th:text="${curso.nome}"></td>
+                <td socpe="row" th:text="${curso.professor.nome}"></td>
                 <td scope="row">
                   <a class="btn btn-success" th:href="@{/curso/paginaAlterar/{idCurso}(idCurso=${curso.id})}">Atualizar</a>
                   <a class="btn btn-danger" th:href="@{/curso/excluir/{idCurso}(idCurso=${curso.id})}">Deletar</a>

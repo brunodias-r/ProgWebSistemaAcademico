@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.senac.entity.Curso;
 import br.com.senac.service.CursoService;
+import br.com.senac.service.ProfessorService;
 
 @Controller
 @RequestMapping(value="curso")
@@ -18,10 +19,14 @@ public class CursoController {
 	@Autowired
 	private CursoService cursoService;
 	
+	@Autowired
+	private ProfessorService professoreService;
+	
 	@GetMapping(value="/listarCursos")
 	public ModelAndView listarTodosCursos() {
 		ModelAndView mv = new ModelAndView("curso/listarCursos");
 		mv.addObject("cursos",cursoService.buscarTodosCursos());
+		mv.addObject("professores",professoreService.buscarTodosProfessores());/*Cardinalidade de professores*/
 		return mv;
 	}	
 	
@@ -29,6 +34,7 @@ public class CursoController {
 	public ModelAndView cadastrarCurso(Curso curso) {
 		ModelAndView mv = new ModelAndView("curso/cadastrarCurso");
 		mv.addObject("curso",new Curso());
+		mv.addObject("professores",professoreService.buscarTodosProfessores());/*Cardinalidade de professores*/
 		return mv;
 	}
 	
@@ -48,12 +54,14 @@ public class CursoController {
 	public ModelAndView alterarCurso(@PathVariable("id") Integer id) {
 		ModelAndView mv = new ModelAndView("curso/alterarCurso");
 		mv.addObject("curso",cursoService.buscarPorId(id));
+		mv.addObject("professores",professoreService.buscarTodosProfessores());/*Cardinalidade de professores*/
 		return mv;
 	}
 	
 	@PostMapping("/salvarAlteracao")
 	public ModelAndView alterar(Curso cursoAlterado) {
 		cursoService.salvarAlteracao(cursoAlterado);
-		return listarTodosCursos();
+		return listarTodosCursos();		
 	}
+	
 }

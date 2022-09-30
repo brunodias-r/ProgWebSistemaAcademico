@@ -51,7 +51,15 @@
                     th:field="*{nome}"
                     id="exampleFormControlInput1"
                     placeholder="nome"
-                  />                  
+                  />
+                  
+                  <div class="form-group row">
+                  	<label>Professores</label>
+                  	<select class="form-control" th:field="*{professor}">
+                  		<option value="">Selecione um professor</option>
+                  		<option th:each="profff : ${professores}" th:value="${profff.id}" th:text="${profff.nome}"></option>
+                  	</select>
+                  </div>                  
                           
               </fieldset>                
             <button type="submit" class="btn btn-primary">Salvar alteração</button>

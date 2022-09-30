@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Curso implements Serializable{
@@ -16,6 +17,15 @@ public class Curso implements Serializable{
 	private Integer id;
 	private String nome;
 	
+	@OneToOne
+	private Professor professor;
+	
+	public Professor getProfessor() {
+		return professor;
+	}
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
 	public Integer getId() {
 		return id;
 	}
