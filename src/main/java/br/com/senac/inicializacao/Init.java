@@ -98,6 +98,38 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //			System.out.println(aluno.getNome());
 //		}
 		
+		Turma turma1 = new Turma();
+		turma1.setTurno("turma 1");
+		
+		Turma turma2 = new Turma();
+		turma2.setTurno("turma 2");
+		
+		Turma turma3 = new Turma();
+		turma3.setTurno("turma 3");
+		
+		turmaService.salvar(turma1);
+		turmaService.salvar(turma2);
+		turmaService.salvar(turma3);
+		
+		Aluno aluno1 = new Aluno();		
+		aluno1.setNome("Lucas");
+		aluno1.setIdade(13);
+		aluno1.setTurma(turma3);
+		
+		Aluno aluno2 = new Aluno();
+		aluno2.setNome("Arthur");
+		aluno2.setIdade(15);
+		aluno2.setTurma(turma2);
+		
+		Aluno aluno3 = new Aluno();
+		aluno3.setNome("José");
+		aluno3.setIdade(20);
+		aluno3.setTurma(turma1);
+		
+		alunoService.salvar(aluno1);
+		alunoService.salvar(aluno2);
+		alunoService.salvar(aluno3);
+		
 		Curso curso1 = new Curso();
 		curso1.setNome("Angular");
 		Curso curso2 = new Curso();
