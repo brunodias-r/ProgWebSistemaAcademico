@@ -32,6 +32,7 @@
                 <th class="mr-auto" scope="col">Id</th>
                 <th class="mr-auto" scope="col">Nome</th>
                 <th class="mr-auto" scope="col">Idade</th>
+                <th class="mr-auto" scope="col">Turma</th>
                 <th scope="col">Opções</th>
               </tr>
             </thead>
@@ -41,6 +42,7 @@
                 <td scope="row" th:text="${aluno.id}"></td>
                 <td scope="row" th:text="${aluno.nome}"></td>
                 <td scope="row" th:text="${aluno.idade}"></td>
+                <td scope="row" th:text="${aluno.turma.turno}"></td>
                 <td scope="row">
                   <a class="btn btn-success" th:href="@{/aluno/paginaAlterar/{idAluno}(idAluno=${aluno.id})}">Atualizar</a>
                   <a class="btn btn-danger" th:href="@{/aluno/excluir/{idAluno}(idAluno=${aluno.id})}">Deletar</a>

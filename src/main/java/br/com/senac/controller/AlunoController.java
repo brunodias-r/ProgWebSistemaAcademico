@@ -32,7 +32,7 @@ public class AlunoController {
 	public ModelAndView cadastrarAluno(Aluno aluno) {
 		ModelAndView mv = new ModelAndView("aluno/cadastrarAluno");
 		mv.addObject("aluno", new Aluno());
-		mv.addObject("listaTurma",turmaService.buscarTodasTurmas());
+		mv.addObject("listarTurma",turmaService.buscarTodasTurmas());
 		return mv;
 	}
 
@@ -52,12 +52,22 @@ public class AlunoController {
 	public ModelAndView alterarAluno(@PathVariable("id") Integer id) {
 		ModelAndView mv = new ModelAndView("aluno/alterarAluno");
 		mv.addObject("aluno",alunoService.buscarPorId(id));
+		mv.addObject("listarTurma",turmaService.buscarTodasTurmas());
 		return mv;
 	}
 	
+//	@PostMapping("/salvarAlteracao")
+//	public ModelAndView alterar(Aluno alunoAlterado) {
+//		alunoService.salvarAlteracao(alunoAlterado);
+//		return listarTodosAlunos();
+//	}
+	
 	@PostMapping("/salvarAlteracao")
 	public ModelAndView alterar(Aluno alunoAlterado) {
-		alunoService.salvarAlteracao(alunoAlterado);
+		Aluno aluno = alunoService.buscarPorId(alunoAlterado.getId());
+		aluno.setNome(alunoAlterado.getNome());
+		aluno.setIdade(alunoAlterado.getIdade());
+		aluno.setTurma(alunoAlterado.getTurma());
 		return listarTodosAlunos();
 	}
 }

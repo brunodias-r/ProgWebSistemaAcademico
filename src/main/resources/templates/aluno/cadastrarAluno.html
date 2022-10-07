@@ -55,14 +55,9 @@
                     placeholder="idade"
                   />
                   <label>Turma</label>
-                  <select
-                    type="text"
-                    class="form-control input-sm"
-                    th:field="*{turma}"
-                    placeholder="turma"
-                  >
+                  <select class="form-control input-sm" th:field="*{turma}">
                   	<option value="">Selecione a turma</option>
-                  	<option value="" th:each="objTurma : ${listaTurma}" th:value="${objTurma.id}" th:text="${objTurma.turno}"></option>
+                  	<option th:each="objTurma : ${listaTurma}" th:value="${objTurma.id}" th:text="${objTurma.turno}"></option>
                   </select>
                 </div>
               </fieldset>

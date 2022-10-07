@@ -1,6 +1,8 @@
 package br.com.senac.inicializacao;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -98,45 +100,15 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //			System.out.println(aluno.getNome());
 //		}
 		
-		Turma turma1 = new Turma();
-		turma1.setTurno("turma 1");
-		
-		Turma turma2 = new Turma();
-		turma2.setTurno("turma 2");
-		
-		Turma turma3 = new Turma();
-		turma3.setTurno("turma 3");
-		
-		turmaService.salvar(turma1);
-		turmaService.salvar(turma2);
-		turmaService.salvar(turma3);
-		
-		Aluno aluno1 = new Aluno();		
-		aluno1.setNome("Lucas");
-		aluno1.setIdade(13);
-		aluno1.setTurma(turma3);
-		
-		Aluno aluno2 = new Aluno();
-		aluno2.setNome("Arthur");
-		aluno2.setIdade(15);
-		aluno2.setTurma(turma2);
-		
-		Aluno aluno3 = new Aluno();
-		aluno3.setNome("José");
-		aluno3.setIdade(20);
-		aluno3.setTurma(turma1);
-		
-		alunoService.salvar(aluno1);
-		alunoService.salvar(aluno2);
-		alunoService.salvar(aluno3);
-		
 		Curso curso1 = new Curso();
 		curso1.setNome("Angular");
 		Curso curso2 = new Curso();
 		curso2.setNome("Java");
 		Curso curso3 = new Curso();
 		curso3.setNome("Python");
-				
+		Curso curso4 = new Curso();
+		curso4.setNome("NodeJS");
+
 		Professor p1 = new Professor(); 
 		p1.setNome("Erivaldo");
 		p1.setIdade(35);
@@ -162,7 +134,53 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 		cursoService.salvar(curso1);
 		cursoService.salvar(curso2);
 		cursoService.salvar(curso3);
+		cursoService.salvar(curso4);
+
+		List<Curso> listaCursos1 = new ArrayList();
+		listaCursos1.add(curso1);
+		listaCursos1.add(curso4);
 		
+		List<Curso> listaCursos2 = new ArrayList();
+		listaCursos2.add(curso2);
+		listaCursos2.add(curso3);
+		
+		List<Curso> listaCursos3 = new ArrayList();
+		listaCursos3.add(curso1);
+		listaCursos3.add(curso3);
+		
+		Turma turma1 = new Turma();
+		turma1.setTurno("turma 1");
+		turma1.setCursos(listaCursos1);
+		
+		Turma turma2 = new Turma();
+		turma2.setTurno("turma 2");
+		turma1.setCursos(listaCursos2);
+
+		Turma turma3 = new Turma();
+		turma3.setTurno("turma 3");
+		
+		turmaService.salvar(turma1);
+		turmaService.salvar(turma2);
+		turmaService.salvar(turma3);
+		
+		Aluno aluno1 = new Aluno();		
+		aluno1.setNome("Lucas");
+		aluno1.setIdade(13);
+		aluno1.setTurma(turma3);
+		
+		Aluno aluno2 = new Aluno();
+		aluno2.setNome("Arthur");
+		aluno2.setIdade(15);
+		aluno2.setTurma(turma2);
+		
+		Aluno aluno3 = new Aluno();
+		aluno3.setNome("José");
+		aluno3.setIdade(20);
+		aluno3.setTurma(turma1);
+		
+		alunoService.salvar(aluno1);
+		alunoService.salvar(aluno2);
+		alunoService.salvar(aluno3);
 		//System.out.println("Funcionando");// repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
 		
 	}
