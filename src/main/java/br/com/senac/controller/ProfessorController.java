@@ -18,9 +18,6 @@ public class ProfessorController {
 	@Autowired
 	private ProfessorService professorService;
 	
-	@Autowired
-	private ProfessorService cursoService;
-	
 	@GetMapping(value= "/listarProfessores")
 	public ModelAndView listarTodosProfessores() {
 		ModelAndView mv = new ModelAndView("professor/listarProfessores");
@@ -32,7 +29,6 @@ public class ProfessorController {
 	public ModelAndView cadastrarProfessor(Professor professor) {
 		ModelAndView mv = new ModelAndView("professor/cadastrarProfessor");
 		mv.addObject("professor",new Professor());
-		mv.addObject("listaCursos",cursoService.buscarTodosProfessores());
 		return mv;
 	}
 	
@@ -52,7 +48,6 @@ public class ProfessorController {
 	public ModelAndView alterarProfessor(@PathVariable("id") Integer id) {
 		ModelAndView mv = new ModelAndView("professor/alterarProfessor");
 		mv.addObject("professor",professorService.buscarPorId(id));
-		mv.addObject("listaCursos",cursoService.buscarTodosProfessores());
 		return mv;
 	}
 	

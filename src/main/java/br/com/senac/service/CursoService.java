@@ -13,7 +13,7 @@ import br.com.senac.repository.CursoRepository;
 public class CursoService {
 	
 	@Autowired
-	CursoRepository repo;
+	private CursoRepository repo;
 	
 	public List<Curso> buscarTodosCursos() {
 		return repo.findAll();

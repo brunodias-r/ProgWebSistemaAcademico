@@ -21,10 +21,10 @@
     <title>CRUD SPRING BOOT</title>
   </head>
 
-  <body style="background-color:#212529 ;color:white;">
+  <body>
     <div class="container-fluid" style="margin: 0 auto">
       <div class="row" style="display: flex; justify-content: center">
-        <div class="col-xl-5 col-lg-5 col-md-8 col-sm-10 col-10">
+        <div class="col-5">
           <h3 style="display: flex; justify-content: center">
             Cadastrar Aluno
           </h3>
@@ -54,11 +54,6 @@
                     id="exampleFormControlInput1"
                     placeholder="idade"
                   />
-                  <label>Turma</label>
-                  <select class="form-control input-sm" th:field="*{turma}">
-                  	<option value="">Selecione a turma</option>
-                  	<option th:each="objTurma : ${listaTurma}" th:value="${objTurma.id}" th:text="${objTurma.turno}"></option>
-                  </select>
                 </div>
               </fieldset>
             </div>

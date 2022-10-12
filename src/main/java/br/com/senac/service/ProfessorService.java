@@ -13,7 +13,7 @@ import br.com.senac.repository.ProfessorRepository;
 public class ProfessorService {
 	
 	@Autowired
-	ProfessorRepository repo;
+	private ProfessorRepository repo;
 	
 	public List<Professor> buscarTodosProfessores(){
 		return repo.findAll();

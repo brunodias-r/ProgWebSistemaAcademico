@@ -20,13 +20,13 @@ public class CursoController {
 	private CursoService cursoService;
 	
 	@Autowired
-	private ProfessorService professorService;
+	private ProfessorService professoreService;
 	
-	@GetMapping("/listarCursos")
+	@GetMapping(value="/listarCursos")
 	public ModelAndView listarTodosCursos() {
 		ModelAndView mv = new ModelAndView("curso/listarCursos");
 		mv.addObject("cursos",cursoService.buscarTodosCursos());
-		mv.addObject("professores",professorService.buscarTodosProfessores());/*Cardinalidade de professores*/
+		mv.addObject("professores",professoreService.buscarTodosProfessores());/*Cardinalidade de professores*/
 		return mv;
 	}	
 	
@@ -34,7 +34,7 @@ public class CursoController {
 	public ModelAndView cadastrarCurso(Curso curso) {
 		ModelAndView mv = new ModelAndView("curso/cadastrarCurso");
 		mv.addObject("curso",new Curso());
-		mv.addObject("professores",professorService.buscarTodosProfessores());/*Cardinalidade de professores*/
+		mv.addObject("professores",professoreService.buscarTodosProfessores());/*Cardinalidade de professores*/
 		return mv;
 	}
 	
@@ -44,8 +44,8 @@ public class CursoController {
 		return listarTodosCursos();
 	}
 	
-	@GetMapping("/excluir/{id}")
-	public ModelAndView excluirCurso(@PathVariable("id") Integer id) {
+	@GetMapping("/excluir/{idx}")
+	public ModelAndView excluirCurso(@PathVariable("idx") Integer id) {
 		cursoService.deletarPorId(id);
 		return listarTodosCursos();
 	}
@@ -54,7 +54,7 @@ public class CursoController {
 	public ModelAndView alterarCurso(@PathVariable("id") Integer id) {
 		ModelAndView mv = new ModelAndView("curso/alterarCurso");
 		mv.addObject("curso",cursoService.buscarPorId(id));
-		mv.addObject("professores",professorService.buscarTodosProfessores());/*Cardinalidade de professores*/
+		mv.addObject("professores",professoreService.buscarTodosProfessores());/*Cardinalidade de professores*/
 		return mv;
 	}
 	
