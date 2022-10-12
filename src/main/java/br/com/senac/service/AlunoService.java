@@ -12,7 +12,7 @@ import br.com.senac.repository.AlunoRepository;
 public class AlunoService {
 	
 	@Autowired /*Autoriza o uso da classe*/
-	private AlunoRepository repo;
+	AlunoRepository repo;
 	
 	public List<Aluno> buscarTodosAlunos(){
 		return repo.findAll();
@@ -31,10 +31,11 @@ public class AlunoService {
 		repo.deleteById(id);
 	}
 	
-	public Aluno salvarAlteracao(Aluno alunoAlterado) {
+	public Aluno salvarAlteracao(Aluno alunoAlterado) {  
 		Aluno aluno = buscarPorId(alunoAlterado.getId());
 		aluno.setNome(alunoAlterado.getNome());
 		aluno.setIdade(alunoAlterado.getIdade());
+		aluno.setTurma(alunoAlterado.getTurma());
 		return salvar(aluno);
 	}
 }

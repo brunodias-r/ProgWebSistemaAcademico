@@ -19,13 +19,7 @@ public class Curso implements Serializable{
 	
 	@OneToOne
 	private Professor professor;
-	
-	public Professor getProfessor() {
-		return professor;
-	}
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
-	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -37,5 +31,11 @@ public class Curso implements Serializable{
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public Professor getProfessor() {
+		return professor;
+	}
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
 	}
 }

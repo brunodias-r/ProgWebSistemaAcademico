@@ -14,7 +14,7 @@ import br.com.senac.repository.TurmaRepository;
 public class TurmaService {
 
 	@Autowired
-	private TurmaRepository repo;
+	TurmaRepository repo;
 	
 	public List<Turma> buscarTodasTurmas() {
 		return repo.findAll();

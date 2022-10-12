@@ -1,6 +1,8 @@
 package br.com.senac.inicializacao;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -97,42 +99,228 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //		for (Aluno aluno : listarAlunos) {
 //			System.out.println(aluno.getNome());
 //		}
-		/***************************************************/
+	/********************************************************************************************************/	
+		Curso curso1 = new Curso();
+		curso1.setNome("Angular");
+		Curso curso2 = new Curso();
+		curso2.setNome("Java");
+		Curso curso3 = new Curso();
+		curso3.setNome("Python");
+
+		Professor p1 = new Professor(); 
+		p1.setNome("Erivaldo");
+		p1.setIdade(35);
+		
+		Professor p2 = new Professor(); 
+		p2.setNome("Ana Karla");
+		p2.setIdade(28);
+		
+		Professor p3 = new Professor(); 
+		p3.setNome("Kratos");
+		p3.setIdade(36);
+		
+
+		
+		professorService.salvar(p1);
+		professorService.salvar(p2);
+		professorService.salvar(p3);
+
+		//professorRepository.saveAll(Arrays.asList(p1,p2,p3));
+		
+		curso1.setProfessor(p1);
+		curso2.setProfessor(p2);
+		curso3.setProfessor(p3);
+
+		cursoService.salvar(curso1);
+		cursoService.salvar(curso2);
+		cursoService.salvar(curso3);
+
+		List<Curso> listaCursos1 = new ArrayList();
+		listaCursos1.add(curso1);
+		listaCursos1.add(curso2);
+		
+		List<Curso> listaCursos2 = new ArrayList();
+		listaCursos2.add(curso2);
+		listaCursos2.add(curso3);
+		
+		List<Curso> listaCursos3 = new ArrayList();
+		listaCursos3.add(curso1);
+		listaCursos3.add(curso3);
+		
+		Turma turma1 = new Turma();
+		turma1.setTurno("turma 1");
+		turma1.setCursos(listaCursos1);
+		
+		Turma turma2 = new Turma();
+		turma2.setTurno("turma 2");
+		turma2.setCursos(listaCursos2);
+
+		Turma turma3 = new Turma();
+		turma3.setTurno("turma 3");
+		turma3.setCursos(listaCursos3);
+		
+		turmaService.salvar(turma1);
+		turmaService.salvar(turma2);
+		turmaService.salvar(turma3);
+		
+		Aluno aluno1 = new Aluno();		
+		aluno1.setNome("Lucas");
+		aluno1.setIdade(13);
+		aluno1.setTurma(turma3);
+		
+		Aluno aluno2 = new Aluno();
+		aluno2.setNome("Arthur");
+		aluno2.setIdade(15);
+		aluno2.setTurma(turma2);
+		
+		Aluno aluno3 = new Aluno();
+		aluno3.setNome("José");
+		aluno3.setIdade(20);
+		aluno3.setTurma(turma1);
+		
+		alunoService.salvar(aluno1);
+		alunoService.salvar(aluno2);
+		alunoService.salvar(aluno3);
+		//System.out.println("Funcionando");// repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
+		/********************************************************************************************************************/
+		
+
 //		Curso curso1 = new Curso();
 //		curso1.setNome("Angular");
 //		Curso curso2 = new Curso();
 //		curso2.setNome("Java");
 //		Curso curso3 = new Curso();
 //		curso3.setNome("Python");
-//				
+//		Curso curso4 = new Curso();
+//		curso4.setNome("NodeJS");
+//
 //		Professor p1 = new Professor(); 
 //		p1.setNome("Erivaldo");
 //		p1.setIdade(35);
-//		
-//		Professor p2 = new Professor(); 
-//		p2.setNome("Ana Karla");
-//		p2.setIdade(28);
-//		
-//		Professor p3 = new Professor(); 
-//		p2.setNome("Kratos");
+//		Professor p2 = new Professor();
+//		p2.setNome("Joao");
 //		p2.setIdade(36);
-//		
+//		Professor p3 = new Professor();
+//		p3.setNome("Claudio");
+//		p3.setIdade(39);
+//		Professor p4 = new Professor();
+//		p4.setNome("Junior");
+//		p4.setIdade(31);
+//
 //		professorService.salvar(p1);
 //		professorService.salvar(p2);
 //		professorService.salvar(p3);
-//
-//		//professorRepository.saveAll(Arrays.asList(p1,p2,p3));
+//		professorService.salvar(p4);
 //		
-//		curso1.setProfessor(p1);
-//		curso2.setProfessor(p2);
-//		curso3.setProfessor(p3);
+//		Curso curso1 = new Curso();
+//		curso1.setNome("NodeJs");
+//		Curso curso2 = new Curso();
+//		curso2.setNome("ASP.NET");
+//		Curso curso3 = new Curso();
+//		curso3.setNome("Spring Boot");
+//		Curso curso4 = new Curso();
+//		curso4.setNome("Angular");
 //
+//		List<Curso> listaCursos1 =  new ArrayList<>();
+//		listaCursos1.add(curso1);
+//		listaCursos1.add(curso4);
+//
+//		List<Curso> listaCursos2 =  new ArrayList<>();
+//		listaCursos2.add(curso1);
+//		listaCursos2.add(curso3);
+//
+//		List<Curso> listaCursos3 =  new ArrayList<>();
+//		listaCursos3.add(curso1);
+//		listaCursos3.add(curso3);
+//
+//		curso1.setProfessor(p1);
+//		curso2.setProfessor(p3);
+//		curso3.setProfessor(p2);
+//		curso4.setProfessor(p4);
 //		cursoService.salvar(curso1);
 //		cursoService.salvar(curso2);
 //		cursoService.salvar(curso3);
+//		cursoService.salvar(curso4);
+//
+//		Turma t1 = new Turma();
+//		t1.setTurno("turma 1");
+//		t1.setCursos(listaCursos1);
+//		Turma t2 = new Turma();
+//		t2.setTurno("turma 2");
+//		t2.setCursos(listaCursos2);
+//		Turma t3 = new Turma();
+//		t3.setTurno("turma 3");
+//		t3.setCursos(listaCursos3);
+//		turmaService.salvar(t1);
+//		turmaService.salvar(t2);
+//		turmaService.salvar(t3);	
+//		
+//		List<Curso> listaCursos1 = new ArrayList();
+//		listaCursos1.add(curso1);
+//		listaCursos1.add(curso4);
+//		
+//		List<Curso> listaCursos2 = new ArrayList();
+//		listaCursos2.add(curso2);
+//		listaCursos2.add(curso3);
+//		
+//		List<Curso> listaCursos3 = new ArrayList();
+//		listaCursos3.add(curso1);
+//		listaCursos3.add(curso3);
+//		
+//		Turma turma1 = new Turma();
+//		turma1.setTurno("turma 1");
+//		turma1.setCursos(listaCursos1);
+//		
+//		Turma turma2 = new Turma();
+//		turma2.setTurno("turma 2");
+//		turma1.setCursos(listaCursos2);
+//
+//		Turma turma3 = new Turma();
+//		turma3.setTurno("turma 3");
+//		
+//		turmaService.salvar(turma1);
+//		turmaService.salvar(turma2);
+//		turmaService.salvar(turma3);
+//		
+//		Aluno aluno1 = new Aluno();		
+//		aluno1.setNome("Lucas");
+//		aluno1.setIdade(13);
+//		aluno1.setTurma(turma3);
 		
-		//System.out.println("Funcionando");// repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
-		
+//		Aluno aluno2 = new Aluno();
+//		aluno2.setNome("Arthur");
+//		aluno2.setIdade(15);
+//		aluno2.setTurma(turma2);
+//		
+//		Aluno aluno3 = new Aluno();
+//		aluno3.setNome("José");
+//		aluno3.setIdade(20);
+//		aluno3.setTurma(turma1);
+//		
+//		alunoService.salvar(aluno1);
+//		alunoService.salvar(aluno2);
+//		alunoService.salvar(aluno3);
+//		//System.out.println("Funcionando");// repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
+//		
+//		
+//		Aluno aluno1 = new Aluno();		
+//		aluno1.setNome("Lucas Santanna");
+//		aluno1.setIdade(13);
+//		aluno1.setTurma(t3);
+//		
+//		Aluno aluno2 = new Aluno();
+//		aluno2.setNome("Arthur Goméz");
+//		aluno2.setIdade(15);
+//		aluno2.setTurma(t2);
+//		
+//		Aluno aluno3 = new Aluno();
+//		aluno3.setNome("José Mendoza");
+//		aluno3.setIdade(20);
+//		aluno3.setTurma(t1);
+//		
+//		alunoService.salvar(aluno1);
+//		alunoService.salvar(aluno2);
+//		alunoService.salvar(aluno3);
 	}
 
 }

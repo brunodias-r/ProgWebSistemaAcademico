@@ -21,18 +21,18 @@
     <title>CRUD SPRING BOOT</title>
   </head>
 
-  <body>
+  <body style="background-color:#212529 ;color:white;">
     <div class="container-fluid" style="margin: 0 auto">
       <div class="row" style="display: flex; justify-content: center">
-        <div class="col-7">
+        <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
           <h3 style="display: flex; justify-content: center">Cursos</h3>
-          <table class="table table-hover">
+          <table class="table table-dark table-bordered">
             <thead>
               <tr>
                 <th class="mr-auto" scope="col">Id</th>
                 <th class="mr-auto" scope="col">Curso</th>
-                <th >Professores</th>
-                <th scope="col">Opções</th>
+                <th class="mr-auto" scope="col">Professores</th>
+                <th class="mr-auto" scope="col">Opções</th>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +42,9 @@
                 <td socpe="row" th:text="${curso.professor.nome}"></td>
                 <td scope="row">
                   <a class="btn btn-success" th:href="@{/curso/paginaAlterar/{idCurso}(idCurso=${curso.id})}">Atualizar</a>
-                  <a class="btn btn-danger" th:href="@{/curso/excluir/{idCurso}(idCurso=${curso.id})}">Deletar</a>
+                  <a class="btn btn-danger" th:href="@{/curso/excluir/{idCurso}(idCurso=${curso.id})}">
+                  	Deletar                 
+                  </a>                  
                 </td>
               </tr>
             </tbody>
