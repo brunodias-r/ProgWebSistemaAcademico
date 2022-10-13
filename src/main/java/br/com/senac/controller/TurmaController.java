@@ -45,13 +45,13 @@ public class TurmaController {
 	}
 	
 	@GetMapping("/excluir/{idx}")
-	public ModelAndView excluirCurso(@PathVariable("idx") Integer id) {
+	public ModelAndView excluirTurma(@PathVariable("idx") Integer id) {
 		turmaService.deletarPorId(id);
 		return listarTodasTurmas();
 	}
 	
 	@GetMapping("/paginaAlterar/{id}")
-	public ModelAndView alterarCurso(@PathVariable("id") Integer id) {
+	public ModelAndView alterarTruma(@PathVariable("id") Integer id) {
 		ModelAndView mv = new ModelAndView("turma/alterarTurma");
 		mv.addObject("turma",turmaService.buscarPorId(id));
 		mv.addObject("listaCursos",cursoService.buscarTodosCursos());
