@@ -1,7 +1,6 @@
 package br.com.senac.inicializacao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import br.com.senac.entity.Aluno;
 import br.com.senac.entity.Curso;
 import br.com.senac.entity.Professor;
 import br.com.senac.entity.Turma;
-import br.com.senac.repository.ProfessorRepository;
 import br.com.senac.service.AlunoService;
 import br.com.senac.service.CursoService;
 import br.com.senac.service.ProfessorService;
