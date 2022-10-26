@@ -8,10 +8,13 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import br.com.senac.entity.Aluno;
+import br.com.senac.entity.AlunoCurso;
+import br.com.senac.entity.Avaliacao;
 import br.com.senac.entity.Curso;
 import br.com.senac.entity.Professor;
 import br.com.senac.entity.Turma;
 import br.com.senac.service.AlunoService;
+import br.com.senac.service.AvaliacaoService;
 import br.com.senac.service.CursoService;
 import br.com.senac.service.ProfessorService;
 import br.com.senac.service.TurmaService;
@@ -30,6 +33,9 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 	
 	@Autowired
 	private TurmaService turmaService;
+	
+	@Autowired
+	private AvaliacaoService avaliacaoService;
 	
 	//@Autowired
 	//private ProfessorRepository professorRepository;
@@ -179,6 +185,23 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 		alunoService.salvar(aluno1);
 		alunoService.salvar(aluno2);
 		alunoService.salvar(aluno3);
+		
+		Avaliacao avaliacao01 = new Avaliacao();
+		AlunoCurso alunoCurso01 = new AlunoCurso();
+		alunoCurso01.setAluno(aluno1);
+		alunoCurso01.setCurso(curso3);
+		
+		avaliacao01.setAlunoCurso(alunoCurso01);
+		avaliacao01.setConceito("I");
+		
+		avaliacaoService.save(avaliacao01);
+		
+		
+		
+		
+		
+		
+		
 		//System.out.println("Funcionando");// repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
 		/********************************************************************************************************************/
 		
@@ -319,6 +342,9 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //		alunoService.salvar(aluno1);
 //		alunoService.salvar(aluno2);
 //		alunoService.salvar(aluno3);
+		
+		
+		
 	}
 
 }
