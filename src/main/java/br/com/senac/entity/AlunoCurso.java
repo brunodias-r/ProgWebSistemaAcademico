@@ -7,6 +7,8 @@ import javax.persistence.ManyToOne;
 
 @Embeddable
 public class AlunoCurso implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
 	private Aluno aluno;
