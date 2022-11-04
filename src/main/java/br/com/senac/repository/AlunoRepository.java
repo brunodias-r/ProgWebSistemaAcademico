@@ -6,5 +6,8 @@ import br.com.senac.entity.Aluno;
 
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Integer>{
-
+	
+	Aluno findByNome(String nome);
+	
+	
 }

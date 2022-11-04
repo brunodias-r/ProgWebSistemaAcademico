@@ -1,6 +1,7 @@
 package br.com.senac.inicializacao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,15 @@ import br.com.senac.entity.Aluno;
 import br.com.senac.entity.AlunoCurso;
 import br.com.senac.entity.Avaliacao;
 import br.com.senac.entity.Curso;
+import br.com.senac.entity.Endereco;
 import br.com.senac.entity.Professor;
 import br.com.senac.entity.Turma;
+import br.com.senac.repository.ProfessorRepository;
+import br.com.senac.repository.TurmaRepository;
 import br.com.senac.service.AlunoService;
 import br.com.senac.service.AvaliacaoService;
 import br.com.senac.service.CursoService;
+import br.com.senac.service.EnderecoService;
 import br.com.senac.service.ProfessorService;
 import br.com.senac.service.TurmaService;
 
@@ -36,6 +41,12 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 	
 	@Autowired
 	private AvaliacaoService avaliacaoService;
+	
+	@Autowired
+	private TurmaRepository turmaRepository;
+	
+	@Autowired
+	private EnderecoService enderecoService;
 	
 	//@Autowired
 	//private ProfessorRepository professorRepository;
@@ -182,9 +193,15 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 		aluno3.setIdade(20);
 		aluno3.setTurma(turma1);
 		
+		Aluno aluno4 = new Aluno();		
+		aluno4.setNome("Walter");
+		aluno4.setIdade(13);
+		aluno4.setTurma(turma3);
+		
 		alunoService.salvar(aluno1);
 		alunoService.salvar(aluno2);
 		alunoService.salvar(aluno3);
+		alunoService.salvar(aluno4);
 		
 		Avaliacao avaliacao01 = new Avaliacao();
 		AlunoCurso alunoCurso01 = new AlunoCurso();
@@ -196,9 +213,42 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 		
 		avaliacaoService.save(avaliacao01);
 		
+//		List<Turma> listaTurmas = turmaService.buscarTodasTurmas();
+//		for(Turma turma : listaTurmas) {
+//			System.out.println(turma.getTurno());
+//			for(Aluno aluno : turma.getAlunos()) {
+//				System.out.println(aluno.getNome());
+//			}
+//		}		
 		
+//		List<Turma> listaTurmas = turmaRepository.findAllByIdTurma(3);
+//		for(Turma turma : listaTurmas) {			
+//			for(Aluno aluno : turma.getAlunos()) {
+//				System.out.println(aluno.getNome());
+//			}
+//		}
 		
+		Endereco endereco1 = new Endereco();
+		endereco1.setRua("Rua Sacadura Cabral");
+		endereco1.setNumero(125);
+		endereco1.setBairro("Leme");
+		endereco1.setComplemento("Praia");
+		endereco1.setCep("21536487");
+		endereco1.setAluno(aluno1);
+		enderecoService.salvar(endereco1);
 		
+		Endereco endereco2 = new Endereco();
+		endereco2.setRua("Rua Visconde de Sepetiba");
+		endereco2.setNumero(196);
+		endereco2.setBairro("Porto Maravilha");
+		endereco2.setComplemento("Santo Cristo");
+		endereco2.setCep("18241589");
+		endereco2.setAluno(aluno1);
+		enderecoService.salvar(endereco2);
+		
+		//Forma errada
+		Aluno al1 = alunoService.buscarPorNome("Lucas");
+		al1.getEnderecos().forEach((e) -> System.out.println("Rua: " + e.getRua() + ", " + e.getNumero() + ", " + e.getComplemento() + ", " +  e.getBairro()));
 		
 		
 		
@@ -342,9 +392,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //		alunoService.salvar(aluno1);
 //		alunoService.salvar(aluno2);
 //		alunoService.salvar(aluno3);
-		
-		
-		
+			
 	}
 
 }
