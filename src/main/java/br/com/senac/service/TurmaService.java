@@ -39,4 +39,14 @@ public class TurmaService {
 		turma.setTurno(turmaAlterada.getTurno());
 		return salvar(turma);
 	}
+	
+	public Turma buscaListaAlunosTurma(Integer id) {
+		Optional<Turma> turma = repo.findById(id);
+		return turma.orElseThrow(() -> new ObjectNotFoundException(id, "Turma não encontrada."));
+	}
+	
+	public Turma findTurmaByIdTurma(Integer id) {
+		Turma turma = repo.findTurmaByIdTurma(id);
+		return turma;
+	}
 }

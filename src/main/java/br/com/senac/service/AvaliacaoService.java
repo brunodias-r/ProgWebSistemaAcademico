@@ -12,14 +12,14 @@ import br.com.senac.repository.AvaliacaoRepository;
 public class AvaliacaoService {
 
 	@Autowired
-	AvaliacaoRepository repo; 
+	private AvaliacaoRepository avaliacaoRepository; 
 	
 	public Avaliacao save(Avaliacao avaliacao) {
-		return repo.save(avaliacao);
+		return avaliacaoRepository.save(avaliacao);
 	}
 	
 	public List<Avaliacao> findAll(){
-		return repo.findAll();
+		return avaliacaoRepository.findAll();
 	}
 	
 }

@@ -12,23 +12,23 @@ import br.com.senac.repository.AlunoRepository;
 public class AlunoService {
 	
 	@Autowired /*Autoriza o uso da classe*/
-	private AlunoRepository repo;
+	private AlunoRepository alunoRepository;
 	
 	public List<Aluno> buscarTodosAlunos(){
-		return repo.findAll();
+		return alunoRepository.findAll();
 	}
 	
 	public Aluno salvar(Aluno aluno) {
-		return repo.save(aluno);
+		return alunoRepository.save(aluno);
 	}
 	
 	public Aluno buscarPorId(Integer id) throws ObjectNotFoundException{
-		Optional<Aluno> aluno = repo.findById(id);
+		Optional<Aluno> aluno = alunoRepository.findById(id);
 		return aluno.orElseThrow(() -> new ObjectNotFoundException(1L,"Aluno não encontrado."));
 	}
 	
 	public void deletarPorId(Integer id) {
-		repo.deleteById(id);
+	    alunoRepository.deleteById(id);
 	}
 	
 	public Aluno salvarAlteracao(Aluno alunoAlterado) {  
@@ -40,7 +40,17 @@ public class AlunoService {
 	}
 	
 	public Aluno buscarPorNome(String nome) {
-		Aluno aluno = repo.findByNome(nome);
+		Aluno aluno = alunoRepository.findByNome(nome);
 		return aluno;
+	}
+	
+	public List<Aluno> buscarAlunoComEndereco(){
+		List<Aluno> lista = alunoRepository.buscarAlunoComEndereco();
+		return lista;
+	}
+	
+	public List<Aluno> buscaAlunoPeloNomeComEndereco(String nome){
+		List<Aluno> lista = alunoRepository.buscaAlunoPeloNome(nome);
+		return lista;
 	}
 }

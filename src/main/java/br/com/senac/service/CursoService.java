@@ -13,24 +13,24 @@ import br.com.senac.repository.CursoRepository;
 public class CursoService {
 	
 	@Autowired
-	CursoRepository repo;
+	private CursoRepository cursoRepository;
 	
 	public List<Curso> buscarTodosCursos() {
-		return repo.findAll();
+		return cursoRepository.findAll();
 	}
 	
 	public Curso salvar(Curso curso) {
-		return repo.save(curso);
+		return cursoRepository.save(curso);
 	}
 	
 	public Curso buscarPorId(Integer id) {
 		String resposta = "Curso não encontrado.";
-		Optional<Curso> curso = repo.findById(id);
+		Optional<Curso> curso = cursoRepository.findById(id);
 		return curso.orElseThrow(() -> new ObjectNotFoundException(1L,resposta));
 	}
 	
 	public void deletarPorId(Integer id) {
-		repo.deleteById(id);
+	    cursoRepository.deleteById(id);
 	}
 	
 	public Curso salvarAlteracao(Curso cursoAlterado) {
