@@ -22,15 +22,13 @@ public class Aluno implements Serializable{
 	private Integer id;
 	private String nome;
 	private Integer idade;
-	@ManyToOne
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="id_turma")
-	/*Pega a referência da chave primária e a adiciona em uma coluna 
-	 * de chaves estrangeiras.
-	 * */
 	private Turma turma;
 	
-	@OneToMany(mappedBy = "aluno", fetch = FetchType.EAGER)
-	private List<Endereco> enderecos = new ArrayList();
+	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+	private List<Endereco> enderecos = new ArrayList<>();
 
 	public Integer getId() {
 		return id;
