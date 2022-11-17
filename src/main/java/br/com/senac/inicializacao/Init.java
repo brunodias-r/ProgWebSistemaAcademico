@@ -1,7 +1,6 @@
 package br.com.senac.inicializacao;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,49 +12,54 @@ import br.com.senac.entity.AlunoCurso;
 import br.com.senac.entity.Avaliacao;
 import br.com.senac.entity.Curso;
 import br.com.senac.entity.Endereco;
+import br.com.senac.entity.Livro;
 import br.com.senac.entity.Professor;
 import br.com.senac.entity.Turma;
-import br.com.senac.repository.ProfessorRepository;
-import br.com.senac.repository.TurmaRepository;
+//import br.com.senac.repository.ProfessorRepository;
+//import br.com.senac.repository.TurmaRepository;
 import br.com.senac.service.AlunoService;
 import br.com.senac.service.AvaliacaoService;
 import br.com.senac.service.CursoService;
 import br.com.senac.service.EnderecoService;
+import br.com.senac.service.LivroService;
 import br.com.senac.service.ProfessorService;
 import br.com.senac.service.TurmaService;
 
 @Component
 public class Init implements ApplicationListener<ContextRefreshedEvent> {
 
-	@Autowired
-	private AlunoService alunoService;
+    @Autowired
+    private AlunoService alunoService;
 
-	@Autowired
-	private CursoService cursoService;
-	
-	@Autowired
-	private ProfessorService professorService;
-	
-	@Autowired
-	private TurmaService turmaService;
-	
-	@Autowired
-	private AvaliacaoService avaliacaoService;
-	
-	@Autowired
-	private TurmaRepository turmaRepository;
-	
-	@Autowired
-	private EnderecoService enderecoService;
-	
-	//@Autowired
-	//private ProfessorRepository professorRepository;
-	
-	// @Autowired
-	//private AlunoRepository repo;
+    @Autowired
+    private CursoService cursoService;
 
-	@Override
-	public void onApplicationEvent(ContextRefreshedEvent event) {
+    @Autowired
+    private ProfessorService professorService;
+
+    @Autowired
+    private TurmaService turmaService;
+
+    @Autowired
+    private AvaliacaoService avaliacaoService;
+//
+//	@Autowired
+//	private TurmaRepository turmaRepository;
+
+    @Autowired
+    private EnderecoService enderecoService;
+
+    @Autowired
+    private LivroService livroService;
+
+    // @Autowired
+    // private ProfessorRepository professorRepository;
+
+    // @Autowired
+    // private AlunoRepository repo;
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event) {
 //		Aluno aluno1 = new Aluno();		
 //		aluno1.setNome("Lucas");
 //		aluno1.setIdade(13);
@@ -102,7 +106,6 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //		turmaService.salvar(turma2);
 //		turmaService.salvar(turma3);
 
-		
 //		Aluno aluno4 = alunoService.buscarPorId(1);
 //
 //		System.out.println("Aluno encontardo: " + aluno4.getNome());
@@ -114,105 +117,103 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //		for (Aluno aluno : listarAlunos) {
 //			System.out.println(aluno.getNome());
 //		}
-	/********************************************************************************************************/	
-		Curso curso1 = new Curso();
-		curso1.setNome("Angular");
-		Curso curso2 = new Curso();
-		curso2.setNome("Java");
-		Curso curso3 = new Curso();
-		curso3.setNome("Python");
+        /********************************************************************************************************/
+        Curso curso1 = new Curso();
+        curso1.setNome("Angular");
+        Curso curso2 = new Curso();
+        curso2.setNome("Java");
+        Curso curso3 = new Curso();
+        curso3.setNome("Python");
 
-		Professor p1 = new Professor(); 
-		p1.setNome("Erivaldo");
-		p1.setIdade(35);
-		
-		Professor p2 = new Professor(); 
-		p2.setNome("Ana Karla");
-		p2.setIdade(28);
-		
-		Professor p3 = new Professor(); 
-		p3.setNome("Kratos");
-		p3.setIdade(36);
-		
+        Professor p1 = new Professor();
+        p1.setNome("Erivaldo");
+        p1.setIdade(35);
 
-		
-		professorService.salvar(p1);
-		professorService.salvar(p2);
-		professorService.salvar(p3);
+        Professor p2 = new Professor();
+        p2.setNome("Ana Karla");
+        p2.setIdade(28);
 
-		//professorRepository.saveAll(Arrays.asList(p1,p2,p3));
-		
-		curso1.setProfessor(p1);
-		curso2.setProfessor(p2);
-		curso3.setProfessor(p3);
+        Professor p3 = new Professor();
+        p3.setNome("Kratos");
+        p3.setIdade(36);
 
-		cursoService.salvar(curso1);
-		cursoService.salvar(curso2);
-		cursoService.salvar(curso3);
+        professorService.salvar(p1);
+        professorService.salvar(p2);
+        professorService.salvar(p3);
 
-		List<Curso> listaCursos1 = new ArrayList();
-		listaCursos1.add(curso1);
-		listaCursos1.add(curso2);
-		
-		List<Curso> listaCursos2 = new ArrayList();
-		listaCursos2.add(curso2);
-		listaCursos2.add(curso3);
-		
-		List<Curso> listaCursos3 = new ArrayList();
-		listaCursos3.add(curso1);
-		listaCursos3.add(curso3);
-		
-		Turma turma1 = new Turma();
-		turma1.setTurno("turma 1");
-		turma1.setCursos(listaCursos1);
-		
-		Turma turma2 = new Turma();
-		turma2.setTurno("turma 2");
-		turma2.setCursos(listaCursos2);
+        // professorRepository.saveAll(Arrays.asList(p1,p2,p3));
 
-		Turma turma3 = new Turma();
-		turma3.setTurno("turma 3");
-		turma3.setCursos(listaCursos3);
-		
-		turmaService.salvar(turma1);
-		turmaService.salvar(turma2);
-		turmaService.salvar(turma3);
-		
-		Aluno aluno1 = new Aluno();		
-		aluno1.setNome("Lucas");
-		aluno1.setIdade(13);
-		aluno1.setTurma(turma3);
-		
-		Aluno aluno2 = new Aluno();
-		aluno2.setNome("Arthur");
-		aluno2.setIdade(15);
-		aluno2.setTurma(turma2);
-		
-		Aluno aluno3 = new Aluno();
-		aluno3.setNome("José");
-		aluno3.setIdade(20);
-		aluno3.setTurma(turma1);
-		
-		Aluno aluno4 = new Aluno();		
-		aluno4.setNome("Walter");
-		aluno4.setIdade(13);
-		aluno4.setTurma(turma3);
-		
-		alunoService.salvar(aluno1);
-		alunoService.salvar(aluno2);
-		alunoService.salvar(aluno3);
-		alunoService.salvar(aluno4);
-		
-		Avaliacao avaliacao01 = new Avaliacao();
-		AlunoCurso alunoCurso01 = new AlunoCurso();
-		alunoCurso01.setAluno(aluno1);
-		alunoCurso01.setCurso(curso3);
-		
-		avaliacao01.setAlunoCurso(alunoCurso01);
-		avaliacao01.setConceito("I");
-		
-		avaliacaoService.save(avaliacao01);
-		
+        curso1.setProfessor(p1);
+        curso2.setProfessor(p2);
+        curso3.setProfessor(p3);
+
+        cursoService.salvar(curso1);
+        cursoService.salvar(curso2);
+        cursoService.salvar(curso3);
+
+        List<Curso> listaCursos1 = new ArrayList<>();
+        listaCursos1.add(curso1);
+        listaCursos1.add(curso2);
+
+        List<Curso> listaCursos2 = new ArrayList<>();
+        listaCursos2.add(curso2);
+        listaCursos2.add(curso3);
+
+        List<Curso> listaCursos3 = new ArrayList<>();
+        listaCursos3.add(curso1);
+        listaCursos3.add(curso3);
+
+        Turma turma1 = new Turma();
+        turma1.setTurno("turma 1");
+        turma1.setCursos(listaCursos1);
+
+        Turma turma2 = new Turma();
+        turma2.setTurno("turma 2");
+        turma2.setCursos(listaCursos2);
+
+        Turma turma3 = new Turma();
+        turma3.setTurno("turma 3");
+        turma3.setCursos(listaCursos3);
+
+        turmaService.salvar(turma1);
+        turmaService.salvar(turma2);
+        turmaService.salvar(turma3);
+
+        Aluno aluno1 = new Aluno();
+        aluno1.setNome("Lucas");
+        aluno1.setIdade(13);
+        aluno1.setTurma(turma3);
+
+        Aluno aluno2 = new Aluno();
+        aluno2.setNome("Arthur");
+        aluno2.setIdade(15);
+        aluno2.setTurma(turma2);
+
+        Aluno aluno3 = new Aluno();
+        aluno3.setNome("José");
+        aluno3.setIdade(20);
+        aluno3.setTurma(turma1);
+
+        Aluno aluno4 = new Aluno();
+        aluno4.setNome("Walter");
+        aluno4.setIdade(13);
+        aluno4.setTurma(turma3);
+
+        alunoService.salvar(aluno1);
+        alunoService.salvar(aluno2);
+        alunoService.salvar(aluno3);
+        alunoService.salvar(aluno4);
+
+        Avaliacao avaliacao01 = new Avaliacao();
+        AlunoCurso alunoCurso01 = new AlunoCurso();
+        alunoCurso01.setAluno(aluno1);
+        alunoCurso01.setCurso(curso3);
+
+        avaliacao01.setAlunoCurso(alunoCurso01);
+        avaliacao01.setConceito("I");
+
+        avaliacaoService.save(avaliacao01);
+
 //		List<Turma> listaTurmas = turmaService.buscarTodasTurmas();
 //		for(Turma turma : listaTurmas) {
 //			System.out.println(turma.getTurno());
@@ -220,41 +221,110 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //				System.out.println(aluno.getNome());
 //			}
 //		}		
-		
+
 //		List<Turma> listaTurmas = turmaRepository.findAllByIdTurma(3);
 //		for(Turma turma : listaTurmas) {			
 //			for(Aluno aluno : turma.getAlunos()) {
 //				System.out.println(aluno.getNome());
 //			}
 //		}
-		
-		Endereco endereco1 = new Endereco();
-		endereco1.setRua("Rua Sacadura Cabral");
-		endereco1.setNumero(125);
-		endereco1.setBairro("Leme");
-		endereco1.setComplemento("Praia");
-		endereco1.setCep("21536487");
-		endereco1.setAluno(aluno1);
-		enderecoService.salvar(endereco1);
-		
-		Endereco endereco2 = new Endereco();
-		endereco2.setRua("Rua Visconde de Sepetiba");
-		endereco2.setNumero(196);
-		endereco2.setBairro("Porto Maravilha");
-		endereco2.setComplemento("Santo Cristo");
-		endereco2.setCep("18241589");
-		endereco2.setAluno(aluno1);
-		enderecoService.salvar(endereco2);
-		
-		//Forma errada
-		Aluno al1 = alunoService.buscarPorNome("Lucas");
-		al1.getEnderecos().forEach((e) -> System.out.println("Rua: " + e.getRua() + ", " + e.getNumero() + ", " + e.getComplemento() + ", " +  e.getBairro()));
-		
-		
-		
-		//System.out.println("Funcionando");// repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
-		/********************************************************************************************************************/
-		
+
+        // AULA - 03/11/2022
+        Endereco endereco1 = new Endereco();
+        endereco1.setRua("Sacadura Cabral");
+        endereco1.setNumero(125);
+        endereco1.setBairro("Leme");
+        endereco1.setComplemento("Praia");
+        endereco1.setCep("21536487");
+        endereco1.setAluno(aluno1);
+        enderecoService.salvar(endereco1);
+
+        Endereco endereco2 = new Endereco();
+        endereco2.setRua("Visconde de Sepetiba");
+        endereco2.setNumero(196);
+        endereco2.setBairro("Porto Maravilha");
+        endereco2.setComplemento("Santo Cristo");
+        endereco2.setCep("18241589");
+        endereco2.setAluno(aluno1);
+        enderecoService.salvar(endereco2);
+
+//		//Forma errada
+//		Aluno al1 = alunoService.buscarPorNome("Lucas");
+//		al1.getEnderecos().forEach((e) -> System.out.println("Rua: " + e.getRua() + ", " + e.getNumero() + ", " + e.getComplemento() + ", " +  e.getBairro()));
+
+//		List<Endereco> listaEnderecoAluno1 = enderecoService.buscar(aluno1);
+//		listaEnderecoAluno1.forEach((e) -> System.out
+//				.println("\nRua: " + e.getRua() + "\nNúmero: " + e.getNumero() + "\nBairro: " + e.getBairro()));
+
+//		List<Aluno> listaAlunoComEndereco = alunoService.buscarAlunoComEndereco();
+//		listaAlunoComEndereco.forEach(a -> a.getEnderecos().forEach(
+//				end -> System.out.println("Aluno nome: " + end.getAluno().getNome() + " Rua: " + end.getRua())));
+
+//		List<Aluno> alunoComEndereco = alunoService.buscaAlunoPeloNomeComEndereco("Lucas");
+//		alunoComEndereco.forEach(a -> a.getEnderecos().forEach(
+//				end -> System.out.println("Aluno nome: " + end.getAluno().getNome() + " Rua: " + end.getRua())));
+
+//		Turma turma = turmaService.buscaListaAlunosTurma(3);
+//		List<Aluno> alunosDaTurma = turma.getAlunos();
+//		alunosDaTurma.forEach((aluno) -> System.out.println("Nome do aluno: " + aluno.getNome()));
+
+//		Turma turma = turmaService.findTurmaByIdTurma(3);
+//		List<Aluno> alunosDaTurma = turma.getAlunos();
+//		alunosDaTurma.forEach((aluno) -> System.out.println("Nome do aluno: " + aluno.getNome()));
+
+        /*
+         * Exercício de relacionmento entre professor e livros. Pergunta: De quais
+         * livros o professor é autor?
+         */
+
+        Livro livro1 = new Livro();
+        livro1.setNome("Rosas ao vento");
+        livro1.setProfessor(p3);
+        livroService.salvar(livro1);
+
+        Livro livro2 = new Livro();
+        livro2.setNome("O suspiro dos inocentes");
+        livro2.setProfessor(p3);
+        livroService.salvar(livro2);
+
+        Livro livro3 = new Livro();
+        livro3.setNome("O amanhã é para sempre");
+        livro3.setProfessor(p3);
+        livroService.salvar(livro3);
+
+        // Listar livros por professor
+//		List<Livro> listaLivroProfessor1 = livroService.buscar(p3);
+//		listaLivroProfessor1.forEach((l) -> 
+//        System.out.println("Título...: " + l.getNome() + "\nAutor....: " + l.getProfessor().getNome()
+//		        ));
+
+//		List<Professor> listaProfessorComLivro = professorService.buscarProfessorComLivro();
+//		listaProfessorComLivro.forEach((l)-> l.getLivros().forEach((liv)-> 
+//		System.out.println("Nome.....: " + liv.getProfessor().getNome())
+//		        ));
+
+        List<Professor> professorComEndereco = professorService.buscaProfessorPeloNomeComLivro("Kratos");
+        professorComEndereco.forEach(l -> l.getLivros().forEach(liv -> System.out
+                .println("Nome.....: " + liv.getProfessor().getNome() + "\nLivro....: " + liv.getNome())));
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        // System.out.println("Funcionando");//
+        // repo.saveAll(Arrays.asList(aluno1,aluno2,aluno3));
+        /********************************************************************************************************************/
 
 //		Curso curso1 = new Curso();
 //		curso1.setNome("Angular");
@@ -357,7 +427,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //		aluno1.setNome("Lucas");
 //		aluno1.setIdade(13);
 //		aluno1.setTurma(turma3);
-		
+
 //		Aluno aluno2 = new Aluno();
 //		aluno2.setNome("Arthur");
 //		aluno2.setIdade(15);
@@ -392,7 +462,7 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
 //		alunoService.salvar(aluno1);
 //		alunoService.salvar(aluno2);
 //		alunoService.salvar(aluno3);
-			
-	}
+
+    }
 
 }
